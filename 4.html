@@ -1,0 +1,53 @@
+<html>
+	<body>
+		 <!-- Hero Section with Form -->
+  <div class="hero">
+    <div class="overlay"></div>
+
+    <div class="form-container">
+      <h2>Welcome to My Portfolio</h2>
+      <input type="text" id="nameInput" placeholder="Enter your full name" required>
+      <input type="text" id="locationInput" placeholder="Enter your location">
+      <textarea id="bioInput" rows="4" placeholder="Write a short bio about yourself..."></textarea>
+      <input type="text" id="profileImgInput" placeholder="Enter your profile picture URL (optional)">
+      <button onclick="generateProfile()">Create My Homepage</button>
+    </div>
+  </div>
+
+  <!-- Profile Section -->
+  <div class="profile-container" id="profileContainer">
+    <img id="profileImg" src="" alt="Profile Picture">
+    <h3 id="profileName"></h3>
+    <p id="profileLocation" class="location"></p>
+    <p id="profileBio"></p>
+  </div>
+
+  <script>
+    function generateProfile() {
+      // Collecting user input
+      const name = document.getElementById('nameInput').value;
+      const location = document.getElementById('locationInput').value;
+      const bio = document.getElementById('bioInput').value;
+      const profileImgURL = document.getElementById('profileImgInput').value;
+
+      // Validation: Ensure name is entered
+      if (name.trim() === '') {
+        alert("Please enter your name.");
+        return;
+      }
+
+      // Update profile section with user input
+      document.getElementById('profileName').innerText = name;
+      document.getElementById('profileLocation').innerText = location || 'Location not provided';
+      document.getElementById('profileBio').innerText = bio || 'No bio provided';
+      document.getElementById('profileImg').src = profileImgURL || 'https://via.placeholder.com/160';
+
+      // Hide the form and show the profile section
+      document.querySelector('.form-container').style.display = 'none';
+      document.getElementById('profileContainer').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
+
